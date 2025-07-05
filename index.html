@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granpods - Communal Aging Celebration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: linear-gradient(135deg, #f8f4f0 0%, #f0e8e0 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid #e85a3d;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e85a3d;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c2c2c;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e85a3d;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f4f0 0%, #e8d4f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(232, 90, 61, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: -5%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(186, 136, 204, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #e85a3d;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: #8b4513;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e85a3d 0%, #d4434a 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(232, 90, 61, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 90, 61, 0.4);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .celebration-card {
+            background: linear-gradient(135deg, #ba88cc 0%, #c8a2d8 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .celebration-card::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .event-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e85a3d;
+            margin-bottom: 1rem;
+        }
+
+        .event-subtitle {
+            color: #8b4513;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-details {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            font-weight: bold;
+            color: #e85a3d;
+        }
+
+        .event-activity {
+            color: #555;
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .free-banner {
+            background: #e85a3d;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #e85a3d;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f4f0 0%, #f0e8e0 100%);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: #e85a3d;
+            margin-bottom: 1rem;
+        }
+
+        /* Sign Up Form */
+        .signup {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #e8d4f0 0%, #f8f4f0 100%);
+        }
+
+        .signup-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .signup h2 {
+            font-size: 2.5rem;
+            color: #e85a3d;
+            margin-bottom: 1rem;
+        }
+
+        .signup-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-weight: bold;
+            color: #2c2c2c;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #e85a3d;
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2c2c;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #e85a3d;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Granpods</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#signup">Join Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>COMMUNAL AGING CELEBRATION</h1>
+                    <p class="hero-tagline">For the courageously authentic 75+</p>
+                    <p class="hero-description">
+                        We're not selling a fantasy of perfect aging; we're celebrating the joy, humor, and quiet rebellion that comes with living long enough to stop caring what people think. Join our decentralized home-care model where small groups gather for shared support, companionship, and everyday adventures.
+                    </p>
+                    <a href="#signup" class="cta-button">Join the Celebration</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="celebration-card">
+                        <h3 class="event-title">Seeking 8 Courageous Elders</h3>
+                        <p class="event-subtitle">Three amazing autumn adventures await</p>
+                        <div class="event-details">
+                            <div class="event-item">
+                                <span class="event-date">OCT 10</span>
+                                <span class="event-activity">Apple & Pumpkin Picking<br><small>NEWBURGH</small></span>
+                            </div>
+                            <div class="event-item">
+                                <span class="event-date">OCT 11</span>
+                                <span class="event-activity">Culinary Experience<br><small>WAPPINGERS</small></span>
+                            </div>
+                            <div class="event-item">
+                                <span class="event-date">OCT 14</span>
+                                <span class="event-activity">Intergenerational Excursion<br><small>BEACON</small></span>
+                            </div>
+                        </div>
+                        <div class="free-banner">
+                            FREE - Transportation, food, and fun provided
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Aging with Edge & Community</h2>
+                    <p>
+                        Granpods is a modern collective care model that brings together older adults for shared support, companionship, and everyday adventures. We believe in celebrating the wisdom, humor, and authentic spirit that comes with age.
+                    </p>
+                    <p>
+                        Our decentralized approach means small groups of adults come together in each other's homes for genuine connection, mutual support, and the kind of adventures that make life worth living at any age.
+                    </p>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🏡</div>
+                        <h3>Home-Centered Care</h3>
+                        <p>Small groups gathering in comfortable, familiar settings</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🤝</div>
+                        <h3>Mutual Support</h3>
+                        <p>Shared experiences and genuine companionship</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🌟</div>
+                        <h3>Authentic Aging</h3>
+                        <p>Celebrating life's wisdom with humor and edge</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Purposeful Adventures</h3>
+                        <p>Meaningful activities and intergenerational connections</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="signup" id="signup">
+        <div class="container">
+            <div class="signup-content">
+                <h2>Join Our Communal Aging Celebration</h2>
+                <p class="signup-description">
+                    Ready to connect with fellow adventurous elders? Sign up for our October celebration events and be part of something authentically amazing.
+                </p>
+                
+                <div class="form-container">
+                    <form id="signupForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth *</label>
+                                <input type="date" id="dob" name="dob" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="cta-button">Count Me In!</button>
+                        
+                        <p class="form-note">
+                            By signing up, you're expressing interest in our communal aging celebration events. All activities are free, including transportation and food. We'll contact you with event details and confirmation.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Granpods</h3>
+                    <p>Celebrating authentic aging through community, adventure, and shared support.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <span>📞 Call +1-917-447-5610</span>
+                        <span>✉️ info.granpods@gmail.com</span>
+                        <span>📍 Hudson Valley, NY</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Mission</h3>
+                    <p>Creating spaces where older adults can age with dignity, humor, and the rebellious spirit that comes from a life well-lived.</p>
+                </div>
+            </div>
+            <hr style="border: 1px solid #444; margin: 2rem 0;">
+            <p>&copy; 2024 Granpods. Aging authentically, together.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.firstName || !data.lastName || !data.dob || !data.phone || !data.email) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Signing You Up...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert(`Thank you, ${data.firstName}! We're excited to have you join our communal aging celebration. You'll receive a confirmation email shortly with event details.`);
+                this.reset();
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 2000);
+        });
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add parallax effect to hero background elements
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero::before');
+                const rate = scrolled * -0.5;
+                
+                // Apply transform to hero background elements
+                document.querySelector('.hero').style.transform = `translateY(${rate}px)`;
+            });
+
+            // Animate features on scroll
+            const features = document.querySelectorAll('.feature');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            features.forEach(feature => {
+                feature.style.opacity = '0';
+                feature.style.transform = 'translateY(20px)';
+                feature.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(feature);
+            });
+        });
+    </script>
+</body>
+</html>
