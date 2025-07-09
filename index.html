@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -396,25 +396,44 @@
 
 
         /* Responsive Design */
-         @media (max-width: 768px) {
-            /* ... (keep your other 768px styles) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
 
-            /* START: Replace the following rules */
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
             .form-grid {
                 grid-template-columns: 1fr;
             }
 
-            .form-group.full-width {
-                grid-column: span 1; /* This is the key fix! */
-            }
- 
             .form-container {
                 padding: 2rem 1.5rem;
-                margin: 0; /* Cleanup: Removed unnecessary margin */
+                margin: 0 10px;
             }
- 
+
             .signup-content {
-                padding: 0; /* Cleanup: Removed unnecessary padding */
+                padding: 0 10px;
             }
 
             .celebration-card {
@@ -444,7 +463,7 @@
             }
         }
 
-    @media (max-width: 480px) {
+        @media (max-width: 480px) {
             .hero-text h1 {
                 font-size: 2rem;
             }
@@ -454,41 +473,21 @@
             }
 
             .form-container {
-                padding: 1.5rem;
-                margin: 0 10px;
-                border-radius: 15px;
+                padding: 1.5rem 1rem;
+                margin: 0 5px;
             }
 
             .signup-content {
-                padding: 0 10px;
+                padding: 0 5px;
             }
 
             .celebration-card {
                 padding: 1.5rem;
-                margin: 0 10px;
+                margin: 0 5px;
             }
 
             .cta-button {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .form-grid {
-                gap: 1.2rem;
-            }
-
-            input {
-                padding: 1rem;
-                font-size: 16px;
-            }
-
-            .signup h2 {
-                font-size: 2rem;
-            }
-
-            .signup-description {
+                padding: 0.8rem 2rem;
                 font-size: 1rem;
             }
         }
