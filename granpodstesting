@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granpods - Shared Homecare That Brings Joy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+        }
+
+        .header {
+            background: #fbbf24;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-container {
+            max-width: 180px;
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            height: 60px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-weight: 600;
+            border-radius: 4px;
+            padding: 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #1a202c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #fc4a1a;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+            font-weight: 700;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid #fbbf24;
+        }
+
+        .card h3 {
+            color: #1a202c;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .problem-section {
+            background: #fff7ed;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            border-left: 4px solid #fbbf24;
+        }
+
+        .fix-section {
+            background: #fef3c7;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .steps {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .step-number {
+            background: #fbbf24;
+            color: #1a202c;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid #fbbf24;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 250px;
+            background: #fbbf24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a202c;
+            font-weight: 600;
+        }
+
+        .event-content {
+            padding: 2rem;
+        }
+
+        .event-date {
+            color: #1a202c;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1a202c;
+            color: #fbbf24;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2d3748;
+        }
+
+        .stages-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stage-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e5e7eb;
+        }
+
+        .stage-image {
+            width: 100%;
+            height: 250px;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+        }
+
+        .stage-caption {
+            padding: 1.5rem;
+            font-weight: 500;
+        }
+
+        .involvement-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .involvement-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 3px solid #fbbf24;
+            text-align: center;
+        }
+
+        .involvement-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .involvement-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .involvement-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .involvement-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .header {
+                justify-content: center;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-placeholder">Your Logo Here</div>
+        </div>
+        <nav>
+            <a href="#concept">Concept</a>
+            <a href="#events">Events</a>
+            <a href="#stages">Stages</a>
+            <a href="#get-involved">Get Involved</a>
+        </nav>
+    </header>
+
+    <section id="concept">
+        <h1>Shared Homecare That Brings Joy</h1>
+        <p style="font-size: 1.25rem; color: #4b5563; margin-bottom: 3rem; max-width: 800px;">Small groups gathering for shared support, companionship, and everyday adventures. Because aging at home shouldn't mean aging alone.</p>
+
+        <div class="problem-section">
+            <h2>Here's the Thing</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">Most of us want to age at home. But traditional homecare is expensive and isolating. You're stuck waiting around for someone to show up, help you with the basics, then leave. Meanwhile, loneliness quietly takes its toll—on health, on happiness, on the simple joy of being around people who get it.</p>
+        </div>
+
+        <div class="fix-section">
+            <h2>How Granpods Works</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">It's pretty straightforward. We bring small groups together so care becomes a shared, social experience.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>Form small pods of 6-8 people with similar needs</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>Make sure homes are safe and accessible</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>Assign two care attendants to each pod</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>Head out to cafes, parks, museums—real places</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div>Provide care and support while everyone socializes</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div>Everyone goes home at the end of the day</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Why It Matters</h2>
+        <div class="concept-grid">
+            <div class="card">
+                <h3>More Affordable</h3>
+                <p>When you share care, you share costs. It's that simple. Projected to be about half the price of traditional homecare.</p>
+            </div>
+            <div class="card">
+                <h3>Actually Social</h3>
+                <p>Care doesn't have to be lonely. With Granpods, you're part of a group—getting out, staying connected, living life.</p>
+            </div>
+            <div class="card">
+                <h3>Better for Everyone</h3>
+                <p>By pooling resources, we free up caregivers for those who truly need one-on-one support. It's a smarter system.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" style="background: #fffbeb;">
+        <h2>Upcoming Adventures</h2>
+        <p style="margin-bottom: 2rem; color: #4b5563; font-size: 1.1rem;">Come hang out with us. No pressure, just good company and something interesting to do together.</p>
+        
+        <div class="events-grid">
+            <!-- Event 1 - Update these details -->
+            <div class="event-card">
+                <div class="event-image">Event Image 1</div>
+                <div class="event-content">
+                    <div class="event-date">Date: [Add Date Here]</div>
+                    <h3 class="event-title">[Event Title Here]</h3>
+                    <p style="margin-bottom: 1.5rem;">[Brief description of the event. What will participants do? Where will it be?]</p>
+                    <a href="#" class="btn">Book Your Spot</a>
+                </div>
+            </div>
+
+            <!-- Event 2 - Update these details -->
+            <div class="event-card">
+                <div class="event-image">Event Image 2</div>
+                <div class="event-content">
+                    <div class="event-date">Date: [Add Date Here]</div>
+                    <h3 class="event-title">[Event Title Here]</h3>
+                    <p style="margin-bottom: 1.5rem;">[Brief description of the event. What will participants do? Where will it be?]</p>
+                    <a href="#" class="btn">Book Your Spot</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stages">
+        <h2>Moments from the Pods</h2>
+        <p style="margin-bottom: 2rem; color: #4b5563; font-size: 1.1rem;">Real moments from real outings. This is what Granpods looks like in action.</p>
+        
+        <div class="stages-gallery">
+            <div class="stage-item">
+                <div class="stage-image">Stage Image 1</div>
+                <div class="stage-caption">[Caption describing this moment]</div>
+            </div>
+            <div class="stage-item">
+                <div class="stage-image">Stage Image 2</div>
+                <div class="stage-caption">[Caption describing this moment]</div>
+            </div>
+            <div class="stage-item">
+                <div class="stage-image">Stage Image 3</div>
+                <div class="stage-caption">[Caption describing this moment]</div>
+            </div>
+            <div class="stage-item">
+                <div class="stage-image">Stage Image 4</div>
+                <div class="stage-caption">[Caption describing this moment]</div>
+            </div>
+            <div class="stage-item">
+                <div class="stage-image">Stage Image 5</div>
+                <div class="stage-caption">[Caption describing this moment]</div>
+            </div>
+            <div class="stage-item">
+                <div class="stage-image">Stage Image 6</div>
+                <div class="stage-caption">[Caption describing this moment]</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-involved" style="background: #fffbeb;">
+        <h2>Join Us</h2>
+        <p style="margin-bottom: 2rem; color: #4b5563; font-size: 1.1rem;">Whether you want to pitch in or be part of a pod, there's a place for you here.</p>
+        
+        <div class="involvement-options">
+            <div class="involvement-card">
+                <h3>Volunteer</h3>
+                <p style="margin-bottom: 1.5rem;">Help us make these gatherings happen. Your time and energy make all the difference.</p>
+                <ul>
+                    <li>Join us for outings and activities</li>
+                    <li>Share what you're good at</li>
+                    <li>Meet great people doing meaningful work</li>
+                    <li>Whatever time you can give helps</li>
+                </ul>
+                <a href="mailto:hello@granpods.com?subject=Volunteer Interest" class="btn">Count Me In</a>
+            </div>
+
+            <div class="involvement-card">
+                <h3>Become a Member</h3>
+                <p style="margin-bottom: 1.5rem;">Join a pod in your area. Get out, stay connected, and make homecare actually work for you.</p>
+                <ul>
+                    <li>Regular outings with your pod</li>
+                    <li>Professional care support when you need it</li>
+                    <li>Real friendships and community</li>
+                    <li>More affordable than going it alone</li>
+                </ul>
+                <a href="mailto:hello@granpods.com?subject=Membership Interest" class="btn">Let's Talk</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Granpods. Homecare that doesn't feel like healthcare.</p>
+        <p style="margin-top: 1rem;">Get in touch: <a href="mailto:hello@granpods.com" style="color: #fbbf24; text-decoration: none;">hello@granpods.com</a></p>
+    </footer>
+</body>
+</html>
